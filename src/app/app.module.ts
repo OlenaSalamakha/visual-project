@@ -7,6 +7,8 @@ import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { LayoutComponent } from './shared/components/layout/layout.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,8 +19,10 @@ import { LayoutComponent } from './shared/components/layout/layout.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule,
   ],
+  exports: [SharedModule],
   providers: [],
   bootstrap: [AppComponent]
 })

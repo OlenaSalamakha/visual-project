@@ -35,10 +35,11 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  font-family: "Lato", sans-serif;
+}
+html {
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
 }
-
 /* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
 ul[class],
 ol[class] {
@@ -80,8 +81,20 @@ select {
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
+
+.font-family-Montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-family-Sarabun {
+  font-family: 'Sarabun', sans-serif;
+}
 
 .header {
+  font-family: "Lato", sans-serif;
   height: 5rem;
   background-color: #ffffff;
   display: flex;
@@ -93,10 +106,18 @@ select {
     flex-direction: column;
 
     .logo {
-      font-family: "Pangolin", cursive;
-      font-size: 1.5rem;
+      font-family: 'Neucha', cursive;
+      font-size: 2rem;
       color: rgb(45, 45, 45);
+
+      transition: 0.5s ease;
+      &:hover {
+        cursor: pointer;
+      }
+
     }
+
+
 
     .link {
       text-decoration: none;
@@ -105,11 +126,12 @@ select {
       position: relative;
       z-index: 0;
       display: inline-block;
-      padding: 5px 5px;
+      padding: 5px;
       overflow: hidden;
       color: #333;
       vertical-align: bottom;
       transition: color 0.3s ease-out;
+      border-radius: 5px;
     }
 
     .link::before {
@@ -135,23 +157,35 @@ select {
     }
 
     .slogan {
-      font-size: 0.6rem;
+      font-size: 0.8rem;
       letter-spacing: 4px;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
+      padding-top: 3px;
     }
   }
 
   .menu {
+    color: rgb(125, 125, 125);
     .menu-item {
-      color: rgb(125, 125, 125);
+      font-weight: 600;
       text-transform: uppercase;
-      margin: 0 10px;
+      margin: 0 20px;
       transition: color 0.3s ease-out;
 
       &:hover {
         cursor: pointer;
-        color: rgb(218, 113, 113);
+        color: rgb(199, 133, 133);
+      }
+    }
+
+    .login-button {
+      color: white;
+      font-weight: 600;
+      border: none;
+      transition:  background-color 0.3s ease-out;
+      &:hover {
+        cursor: pointer;
+        background-color: #64b3f4;
+        color: #ffffff;
       }
     }
   }
@@ -159,19 +193,70 @@ select {
 
 .home-page {
   .bunner {
-    height: calc(100vh - 5rem);
+    height: calc(100vh - 20rem);
     background: url("img/main-bg-6.jpg");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
     opacity: 0.85;
+
+    .bunner-text  {
+      display: inline-block;
+      width: 40%;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: linear-gradient(
+        90deg,
+        #a8d891 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      line-height: 1.6;
+      padding: 100px;
+      position: absolute;
+      top: 133px;
+      border-radius: 4px;
+    }
   }
-  .article {
-    height: 60vh;
+  .article-1 {
+    height: 85vh;
     background-color: whitesmoke;
+    figure {
+      width: 30%;
+    }
+    .article-visual-schedule{
+      width: 40%;
+    }
+
+  }
+  .article-2 {
+    height: 40vh;
+    background-color: rgb(54, 54, 54);
   }
 }
+.login-page {
+  .login-page-container {
+    height: calc(100vh - 9rem);
+    background: url("img/main-bg-6.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.75;
+    .form-card {
+      width: 500px;
+      height: 600px;
+      background-color: #ffffffe3;
+      padding: 60px;
 
+      .p-field {
+        display: flex;
+        flex-direction: column;
+        margin: 15px 0;
+      }
+    }
+  }
+
+}
 .footer {
   position: static;
   left: 0;
@@ -197,4 +282,30 @@ select {
 }
 .box-shadow-1 {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.size-1 {
+  font-size: 1.2rem;
+}
+
+.size-2 {
+  font-size: 1.5rem;
+}
+
+.size-3 {
+  font-size: 2rem;
+}
+
+.link-primary {
+  color: #046dc4;
+  cursor: pointer;
+}
+
+// OVERRIDES
+.p-component {
+  font-family: "Lato", sans-serif;
+  .p-button:focus {
+    box-shadow: none;
+    outline: none;
+  }
 }

@@ -22,6 +22,7 @@
     "@angular/router": "~9.0.6",
     "@ngxs/router-plugin": "^3.7.1",
     "@ngxs/store": "^3.7.1",
+    "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
     "primeng": "^11.3.1",
     "rxjs": "~6.5.4",

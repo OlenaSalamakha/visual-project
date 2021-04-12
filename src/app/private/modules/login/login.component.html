@@ -1,2 +1,41 @@
-<p>login works!</p>
-<button (click)="login()">Увійти у систему</button>
+<div class="login-page">
+  <div class="login-page-container p-d-flex p-jc-center p-ai-center">
+    <div class="form-card font-family-Sarabun">
+      <span class="p-text-bold size-3">Вхід</span>
+      <div class="p-py-1">
+        <div class="p-field">
+          <label for="username">Логін</label>
+          <input
+            id="username"
+            type="username"
+            aria-describedby="username-help"
+            placeholder="Введіть ваш логін"
+            class="p-p-2"
+            pInputText
+          />
+        </div>
+        <div class="p-field">
+          <label for="password">Пароль</label>
+          <input
+            id="password"
+            type="password"
+            aria-describedby="password-help"
+            placeholder="Введіть ваш пароль"
+            class="p-p-2"
+            pInputText
+          />
+        </div>
+      </div>
+      <div class="p-d-flex p-jc-end">
+        <a class="link-primary" (click)="navigateTo('new-account/signin')"> Немає створеного акаунту? Зареєструватися</a>
+      </div>
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Увійти у систему"
+        (click)="navigateTo('private/dashboard')"
+      ></button>
+    </div>
+  </div>
+</div>

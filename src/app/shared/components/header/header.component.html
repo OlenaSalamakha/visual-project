@@ -1,15 +1,21 @@
 <div class="header box-shadow-1">
   <div class="logo-container">
-    <span (click)="navigateTo('home')" class="logo link">Візуальний Розклад</span>
+    <span (click)="navigateTo('home')" class="logo link"
+      >Візуальний Розклад</span
+    >
     <span class="slogan">Щасливі діти, щасливі ми</span>
   </div>
-  <div class="menu">
-    <a class="menu-item">Про Візуальний Розклад</a>
+  <div class="menu p-d-flex p-ai-center">
+    <a class="menu-item">Що таке Візуальний Розклад</a>
     <a class="menu-item">Контакти</a>
     <a class="menu-item">Підтримка</a>
-    <a class="menu-item login-button" (click)="navigateTo('account/login')">Увійти</a>
-
-    <!-- <a class="menu-item" (click)="navigateTo('new-account/signin')">Зареєструватись</a> -->
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Увійти"
+      class="p-button-info login-button menu-item"
+      (click)="navigateTo('account/login')"
+    ></button>
   </div>
-
 </div>
