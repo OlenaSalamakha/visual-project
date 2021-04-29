@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomePageCircles } from 'src/app/shared/constants/home-pros.constants';
 
 @Component({
   selector: 'app-welcome-page',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome-page.component.scss']
 })
 export class WelcomePageComponent implements OnInit {
-
+  public circles = JSON.parse(JSON.stringify(HomePageCircles));
   constructor() { }
 
   ngOnInit(): void {

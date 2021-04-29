@@ -13,7 +13,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [SigninComponent],
   imports: [
     CommonModule,
     SharedModule,

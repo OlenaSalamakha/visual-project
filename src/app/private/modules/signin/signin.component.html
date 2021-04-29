@@ -1,1 +1,77 @@
-<p>signin works!</p>
+<div class="login-page">
+  <div class="login-page-container p-d-flex p-ai-center">
+    <div class="form-card font-family-Sarabun">
+      <span class="p-text-bold size-3">Реєстрація</span>
+      <div class="p-mt-5">
+        <div class="p-field">
+          <label for="name">Імʼя*</label>
+          <input
+            id="name"
+            type="name"
+            aria-describedby="name-help"
+            class="w-100 p-p-2"
+            pInputText
+          />
+        </div>
+        <div class="p-field">
+          <label for="surname">Прізвище*</label>
+          <input
+            id="surname"
+            type="surname"
+            aria-describedby="name-help"
+            class="w-100 p-p-2"
+            pInputText
+          />
+        </div>
+        <div class="p-field">
+          <label for="username">Логін*</label>
+          <input
+            id="username"
+            type="username"
+            aria-describedby="username-help"
+            class="w-100 p-p-2"
+            pInputText
+          />
+        </div>
+        <div class="p-field">
+          <label for="password">Пароль*</label>
+
+            <input
+              id="password"
+              type="text"
+              aria-describedby="password-help"
+              class="w-100 p-p-2"
+              pInputText
+            />
+        </div>
+        <div class="p-field">
+          <label for="passwordMatch">Підтвердити пароль*</label>
+
+            <input
+              id="passwordMatch"
+              type="text"
+              aria-describedby="passwordMatch-help"
+              class="w-100 p-p-2"
+              pInputText
+            />
+        </div>
+      </div>
+      <div class="p-d-flex p-jc-end">
+        <p-button
+          label="Я вже маю акаунт."
+          styleClass="p-button-link p-mb-5"
+          (click)="navigateTo('account/login')"
+        ></p-button>
+      </div>
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Зареєструватися"
+        (click)="navigateTo('private/dashboard')"
+        class="w-100 p-my-5 p-text-bold signin-btn"
+      ></button>
+    </div>
+  </div>
+</div>
+

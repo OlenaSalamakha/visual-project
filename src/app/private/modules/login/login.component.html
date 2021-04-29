@@ -1,8 +1,8 @@
 <div class="login-page">
-  <div class="login-page-container p-d-flex p-jc-center p-ai-center">
+  <div class="login-page-container p-d-flex p-ai-center">
     <div class="form-card font-family-Sarabun">
       <span class="p-text-bold size-3">Вхід</span>
-      <div class="p-py-1">
+      <div class="p-mt-5">
         <div class="p-field">
           <label for="username">Логін</label>
           <input
@@ -10,31 +10,50 @@
             type="username"
             aria-describedby="username-help"
             placeholder="Введіть ваш логін"
-            class="p-p-2"
+            class="w-100 p-p-2"
             pInputText
           />
         </div>
         <div class="p-field">
           <label for="password">Пароль</label>
-          <input
-            id="password"
-            type="password"
-            aria-describedby="password-help"
-            placeholder="Введіть ваш пароль"
-            class="p-p-2"
-            pInputText
-          />
+          <span class="p-input-icon-right">
+            <ng-template #isPasswordVisible>
+              <i
+                class="pi pi-eye-slash"
+                (click)="isPasswordHidden = !isPasswordHidden"
+              ></i>
+            </ng-template>
+
+            <i
+              class="pi pi-eye"
+              *ngIf="isPasswordHidden; else isPasswordVisible"
+              (click)="isPasswordHidden = !isPasswordHidden"
+            ></i>
+            <input
+              id="password"
+              [type]="isPasswordHidden ? 'text' : 'password'"
+              aria-describedby="password-help"
+              placeholder="Введіть ваш пароль"
+              class="w-100 p-p-2"
+              pInputText
+            />
+          </span>
         </div>
       </div>
       <div class="p-d-flex p-jc-end">
-        <a class="link-primary" (click)="navigateTo('new-account/signin')"> Немає створеного акаунту? Зареєструватися</a>
+        <p-button
+          label="Немає акаунту? Зареєструватися."
+          styleClass="p-button-link p-mb-5"
+          (click)="navigateTo('new-account/signin')"
+        ></p-button>
       </div>
       <button
         pButton
         pRipple
         type="button"
-        label="Увійти у систему"
+        label="Увійти"
         (click)="navigateTo('private/dashboard')"
+        class="w-100 p-my-5 p-text-bold login-btn"
       ></button>
     </div>
   </div>

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  isPasswordHidden  = false;
 
   constructor(private router: Router) {}
 
