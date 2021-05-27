@@ -1,0 +1,232 @@
+<div class="p-p-5 layout-create-schedule">
+  <div
+    class="p-jc-center"
+    style="
+      border-radius: 6px;
+      background: white;
+      padding: 30px;
+      min-height: 75vh;
+    "
+  >
+    <p-steps [model]="items" [(activeIndex)]="activeIndex"></p-steps>
+    <div [formGroup]="scheduleForm" class="p-pt-5" *ngIf="activeIndex === 0">
+      <div class="p-field">
+        <label for="name">Назва</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          placeholder="Введіть назву для розкладу"
+          class="w-100 p-p-2"
+          pInputText
+        />
+      </div>
+      <div class="p-field">
+        <label for="description">Опис</label>
+        <input
+          id="description"
+          type="text"
+          formControlName="description"
+          placeholder="Введіть опис для розкладу"
+          class="w-100 p-p-2"
+          pInputText
+        />
+      </div>
+      <div class="p-field">
+        <label for="imgUrl">Посилання на зображення</label>
+        <input
+          id="imgUrl"
+          type="text"
+          formControlName="img"
+          placeholder="Посилання на картинку з мережі Інтернет"
+          class="w-100 p-p-2"
+          pInputText
+        />
+      </div>
+      <span>Визначіть складність розкладу</span>
+      <p-rating [cancel]="false" formControlName="complexity"></p-rating>
+      <div class="p-d-flex p-jc-end p-my-3">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Продовжити"
+          (click)="changeTab('next')"
+          [disabled]="!scheduleForm.valid"
+          class="p-button-raised start-work-btn"
+        ></button>
+      </div>
+    </div>
+
+    <div *ngIf="activeIndex === 1">
+      <div [formGroup]="eventForm" class="" *ngIf="activeIndex === 1"></div>
+
+      <div class="p-d-flex p-my-3">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Додати подію"
+          icon="pi pi-plus"
+          (click)="onAddEvent()"
+          class="p-button-raised p-button-secondary start-work-btn"
+        ></button>
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Очистити поля"
+          icon="pi pi-trash"
+          (click)="resetEventForm()"
+          class="p-button-raised p-button-secondary start-work-btn p-mx-3"
+        ></button>
+      </div>
+
+      <div *ngFor="let event of eventsArray.controls">
+        <div
+          [formGroup]="event"
+          class="p-py-4"
+          style="border-bottom: 1px solid lightblue"
+        >
+          <div class="p-field">
+            <label for="name">Назва</label>
+            <input
+              id="name"
+              type="text"
+              formControlName="title"
+              placeholder="Введіть назву події"
+              class="w-100 p-p-2"
+              pInputText
+            />
+          </div>
+          <div class="p-field">
+            <label for="description">Опис</label>
+            <input
+              id="description"
+              type="text"
+              formControlName="description"
+              placeholder="Введіть опис для події"
+              class="w-100 p-p-2"
+              pInputText
+            />
+          </div>
+          <div class="p-field">
+            <label for="description">Час на виконання виконання</label>
+            <input
+              id="duration"
+              type="text"
+              formControlName="duration"
+              placeholder="Введіть скільки часу займе подія"
+              class="w-100 p-p-2"
+              pInputText
+            />
+          </div>
+          <div class="p-field">
+            <label for="imgUrl">Посилання на зображення</label>
+            <input
+              id="imgUrl"
+              type="text"
+              formControlName="img"
+              placeholder="Посилання на картинку з мережі Інтернет"
+              class="w-100 p-p-2"
+              pInputText
+            />
+          </div>
+
+          <p-fileUpload
+            name="myfile[]"
+            customUpload="true"
+            (uploadHandler)="myUploader($event)"
+          ></p-fileUpload>
+        </div>
+      </div>
+
+      <div class="p-d-flex p-jc-between p-my-3">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Назад"
+          (click)="changeTab('previous')"
+          class="p-button-raised start-work-btn"
+        ></button>
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Продовжити"
+          (click)="submitEventsData()"
+          [disabled]="!eventForm.valid"
+          class="p-button-raised start-work-btn"
+        ></button>
+      </div>
+    </div>
+    <div *ngIf="activeIndex === 2">
+      <div class="p-mx-1 p-d-flex p-flex-column p-my-5">
+        <span
+          class="size-2 p-text-uppercase p-text-bold"
+          style="color: #fdd726"
+          >{{ finalScheduleValues.name }}</span
+        >
+        <span class="size-1 p-text-italic">{{
+          finalScheduleValues.description
+        }}</span>
+        <span class="size-1 p-text-italic"
+          >Складність у балах: {{ finalScheduleValues.complexity }} із 5</span
+        >
+      </div>
+
+      <div class="p-grid p-jc-around">
+        <div
+          *ngFor="let event of finalScheduleValues.eventsList"
+          class="
+            preview-card
+            p-d-flex
+            p-jc-center
+            p-ai-center
+            p-flex-column
+            p-col-3
+            p-shadow-2
+            p-m-3
+            p-p-5
+          "
+          style="border-radius: 6px; height: 260px"
+          (click)="changeTab('previous')"
+        >
+          <div
+            class="size-1 p-text-italic"
+            style="color: white; position: relative; top: 20px"
+          >
+            Натисніть на картку, щоб змінити дані
+            <span
+              ><i
+                class="pi pi-pencil"
+                style="font-size: 1.5rem; color: white; padding: 0 15px"
+              ></i
+            ></span>
+          </div>
+          <span class="size-2"> Назва події: {{ event.title }} </span>
+        </div>
+      </div>
+
+      <div class="p-d-flex p-jc-between">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Назад"
+          (click)="changeTab('previous')"
+          class="p-button-raised start-work-btn"
+        ></button>
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Створити розклад"
+          (click)="submitScheduleData()"
+          class="p-button-raised start-work-btn"
+        ></button>
+      </div>
+    </div>
+  </div>
+</div>

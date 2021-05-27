@@ -1,5 +1,9 @@
 <div class="dashboard-page">
-  <div class="dashboard-wrapper">
+  <div class="dashboard-wrapper p-shadow-2
+  ">
+  <div class="intro-text">
+   Розвиваємо сильні сторони із візуальним розкладом!
+  </div>
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide box-shadow-1">
@@ -15,19 +19,13 @@
           <img src="./assets/img/col-4.jpg" alt="" />
         </div>
       </div>
-      <div class="swiper-pagination"></div>
-    </div>
-    <div class="intro-text">
-      Візуальний розклад - це ефективна стратегія, яка забезпечує
-      передбачуваність, водночас передбачає гнучкість. Зміни стають легшими,
-      очікування зрозумілішим, а дитина навчається гнучкості. Плани
-      використовуються в школі, вдома та інших місцях.
     </div>
     <button
       pButton
       pRipple
       type="button"
       label="Розпочати роботу"
+      (click)="navigateTo('private/create-schedule')"
       class="p-button-raised p-button-text start-work-btn"
     ></button>
   </div>

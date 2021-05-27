@@ -86,7 +86,10 @@ select {
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Sarabun&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap");
-@import '~swiper/swiper-bundle';
+@import "~swiper/swiper-bundle";
+.border-top {
+  border-top: 1px solid lightblue;
+}
 
 .header {
   //  font-family: "Lato", sans-serif;
@@ -155,12 +158,6 @@ select {
       transform: translateY(0);
       transition: transform 0.25s ease-out;
     }
-
-    // .slogan {
-    //   font-size: 0.8rem;
-    //   letter-spacing: 4px;
-    //   padding-top: 3px;
-    // }
   }
 
   .right-menu {
@@ -306,7 +303,6 @@ select {
 .dashboard-page {
   height: calc(100vh - 9rem);
   background-color: #a9c1d326;
-  //  background: url("img/login-7.jpg");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -318,7 +314,7 @@ select {
     border-radius: 4px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: column;
     .swiper-container {
       width: 90%;
@@ -346,26 +342,26 @@ select {
     }
     .intro-text {
       width: 70%;
-      font-size: 2rem;
-      color: hotpink;
+      font-size: 3rem;
+      color: rgb(0, 159, 187);
       font-weight: bold;
       text-align: center;
       margin-bottom: 30px;
+      font-family: "Neucha", cursive;
+      letter-spacing: 5px;
     }
     .start-work-btn {
       width: 20%;
-      height: 80px;
+      height: 60px;
       border-radius: 6px;
       background-color: #53bdd4;
-      // background-color: transparent;
-      // border: 3px solid rgb(226, 138, 138);
       color: rgb(255, 255, 255);
-      font-size: 2rem;
+      font-size: 1.5rem;
       text-transform: uppercase;
       font-family: Neucha;
       letter-spacing: 3px;
       font-weight: bold;
-      transition: all .4s;
+      transition: all 0.4s;
       &:hover {
         background-color: #53bdd4;
         color: white;
@@ -396,6 +392,20 @@ select {
   position: relative;
   min-height: calc(100vh - 9rem);
   background-color: rgb(255, 255, 255);
+}
+
+.layout-create-schedule {
+  position: relative;
+  min-height: calc(100vh - 9rem);
+  background-color: #53bdd41a;
+  .preview-card {
+    transition: 0.5s ease;
+    &:hover {
+      background-color: #a8d891;
+      cursor: pointer;
+      color: #a8d891;
+    }
+  }
 }
 
 .box-shadow-1 {
@@ -435,6 +445,10 @@ select {
   font-family: "Sarabun", sans-serif;
 }
 
+.font-family-Neucha {
+  font-family: "Neucha", cursive;
+}
+
 // OVERRIDES
 .p-component {
   font-family: "Lato", sans-serif;
@@ -442,4 +456,110 @@ select {
     box-shadow: none;
     outline: none;
   }
+
+
+}
+
+.p-button {
+  background-color: #28a1bb;
+  border: 1px solid #28a1bb;
+}
+
+.p-button:enabled:hover {
+  background-color: #19a4ca;
+border: 1px solid #2385a1;
+}
+
+.p-button.p-button-secondary {
+  background-color: #2385a1;
+  border: 1px solid #2385a1;
+}
+
+.p-button.p-button-secondary:enabled:hover {
+  background-color: #1f94b5;
+border: 1px solid #2385a1;
+}
+
+.list-schedules-page {
+  padding: 30px;
+  background-color: #f0f8ff94;
+  min-height: calc(100vh - 9rem);
+
+  .schedules-table {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 3px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+}
+
+.view-schedule-page {
+  padding: 30px;
+  background-color: #f0f8ff94;
+  .card {
+    padding: 20px;
+    background-color: #ffffff;
+    margin-top: 20px;
+    border-radius: 3px;
+
+    .schedule-title {
+      color: #53bdd4;
+      font-weight: bold;
+      letter-spacing: 4;
+    }
+
+    .p-card .p-card-body {
+      background-color: aliceblue;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: #a8d891;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .custom-marker {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff5d4;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  ::ng-deep {
+    .p-timeline-event-content,
+    .p-timeline-event-opposite {
+      line-height: 1;
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    ::ng-deep {
+      .customized-timeline {
+        .p-timeline-event:nth-child(even) {
+          flex-direction: row !important;
+
+          .p-timeline-event-content {
+            text-align: left !important;
+          }
+        }
+
+        .p-timeline-event-opposite {
+          flex: 0;
+        }
+
+        .p-card {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}
+.is-done {
+  background-color: #a8d891;
 }

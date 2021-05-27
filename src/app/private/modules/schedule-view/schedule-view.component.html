@@ -1,0 +1,58 @@
+<div class="view-schedule-page">
+  <p-breadcrumb [home]="home" [model]="breadcrumbsItems"></p-breadcrumb>
+
+  <div class="card">
+    <div class="p-d-flex p-jc-between">
+      <div>
+        <span class="size-3 font-family-Neucha schedule-title">{{
+          schedule?.name
+        }}</span>
+        <br>
+        <span class="size-1 p-m-1"
+          >Складність розкладу: {{ schedule?.complexity }} / 5</span
+        >
+      </div>
+
+      <div>
+        <span class="size-1" style="color: gray"> {{ schedule?.cDate | date: "shortDate" }}</span>
+        <i class="pi pi-calendar p-m-1 size-1" style="color: gray"></i>
+      </div>
+    </div>
+
+    <p-timeline
+      [value]="schedule?.eventsList"
+      align="alternate"
+      styleClass="customized-timeline"
+    >
+      <ng-template pTemplate="marker" let-event>
+        <span
+          class="custom-marker p-shadow-2"
+          [style.backgroundColor]="event.isDone ? '#a8d891' : null"
+
+        >
+        <i *ngIf="event.isDone ? '#a8d891' : null" style="color: white;" class="pi pi-check-circle"></i>
+        </span>
+      </ng-template>
+      <ng-template pTemplate="content" let-event>
+        <p-card [header]="event.title" (click)="markAsDone(event)">
+          <div class="p-d-flex">
+            <img
+            [src]="event.img"
+            [alt]="event.name"
+            width="300"
+            class="p-shadow-1"
+          />
+          <div class="p-p-3">
+            <span class="size-2">{{ event.description }}</span>
+            <br>
+            <i class="pi pi-clock size-2"></i>
+            <span class="p-m-2 size-2">{{ event.duration }}</span>
+          </div>
+          </div>
+
+
+        </p-card>
+      </ng-template>
+    </p-timeline>
+  </div>
+</div>

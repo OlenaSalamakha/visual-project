@@ -1,21 +1,24 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Swiper, { Navigation, Pagination } from 'swiper';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-
   ngAfterViewInit() {
     this.carouselInit();
+  }
+
+  navigateTo(path: string) {
+    this.router.navigate([path]);
   }
 
   carouselInit() {
@@ -25,10 +28,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       slidesPerView: 3,
       spaceBetween: 30,
       loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
+      autoplay: {
+        delay: 1000,
+        disableOnInteraction: false
+      }
     });
   }
 

@@ -14,6 +14,27 @@ const routes: Routes = [
             m => m.DashboardModule
           )
       },
+      {
+        path: 'create-schedule',
+        loadChildren: () =>
+          import('../private/modules/create-schedule/create-schedule.module').then(
+            m => m.CreateScheduleModule
+          )
+      },
+      {
+        path: 'schedules-list',
+        loadChildren: () =>
+          import('../private/modules/schedules-list/schedules-list.module').then(
+            m => m.SchedulesListModule
+          )
+      },
+      {
+        path: 'schedule-view/:id',
+        loadChildren: () =>
+          import('../private/modules/schedule-view/schedule-view.module').then(
+            m => m.ScheduleViewModule
+          )
+      },
     ]
   },
 ];

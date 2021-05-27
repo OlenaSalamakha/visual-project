@@ -1,0 +1,29 @@
+<div class="list-schedules-page">
+  <p-breadcrumb [home]="home" [model]="breadcrumbsItems"></p-breadcrumb>
+
+  <table class="size-1 schedules-table p-shadow-2">
+    <thead>
+      <tr
+      >
+        <th *ngFor="let header of theaders" class="p-pb-3">{{ header }}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let item of loadedSchedules">
+        <tr
+        >
+        <td class="border-top p-py-3 p-text-center">
+          <img [src]="item.imgUrl" alt="item.name" style="width: 150px;">
+        </td>
+          <td class="border-top p-py-3 p-text-center">{{item.name}}</td>
+          <td class="border-top p-py-3 p-text-center">{{item.description}}</td>
+          <td class="border-top p-py-3 p-text-center">{{item.complexity}}</td>
+          <td class="border-top p-py-3 p-text-center">{{item.cDate | date:'short'}}</td>
+          <td class="border-top p-py-3 p-text-center">
+            <button pButton pRipple type="button" icon="pi pi-external-link" class="p-button-rounded" (click)="navigateTo(item.id)"></button>
+          </td>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

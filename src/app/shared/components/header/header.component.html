@@ -1,23 +1,43 @@
 <div class="header box-shadow-1">
   <div class="logo-container">
-    <img src="./assets/img/pen2.png" alt="pensil" class="logo-icon">
+    <img src="./assets/img/pen2.png" alt="pensil" class="logo-icon" />
     <span (click)="navigateTo('home')" class="logo link"
       >Візуальний Розклад</span
     >
-
-    <!-- <span class="slogan">Щасливі діти, щасливі ми</span> -->
   </div>
   <div class="right-menu p-d-flex p-ai-center">
-    <a class="menu-item">Чому Візуальний?</a>
-    <!-- <a class="menu-item">Контакти</a> -->
-    <a class="menu-item">Підтримка</a>
-    <button
-      pButton
-      pRipple
-      type="button"
-      label="Увійти"
-      class="p-button-info login-button menu-item"
-      (click)="navigateTo('account/login')"
-    ></button>
+    <div
+      *ngIf="
+        router.url.includes('home') || router.url.includes('login');
+        else user
+      "
+    >
+      <a class="menu-item">Чому Візуальний?</a>
+      <a class="menu-item">Підтримка</a>
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Увійти"
+        class="p-button-info login-button menu-item"
+        (click)="navigateTo('account/login')"
+      ></button>
+    </div>
+    <ng-template #user>
+      <a class="menu-item" (click)="navigateTo('/private/dashboard')"
+        >Головна</a
+      >
+      <a class="menu-item" (click)="navigateTo('/private/schedules-list')"
+        >Розклади</a
+      >
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Створити розклад"
+        class="p-button-info login-button menu-item"
+        (click)="navigateTo('/private/create-schedule')"
+      ></button>
+    </ng-template>
   </div>
 </div>

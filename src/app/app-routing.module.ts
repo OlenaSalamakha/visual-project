@@ -18,7 +18,7 @@ const routes: Routes = [
     redirectTo: '/new-account',
     pathMatch: 'full'
   },
-{
+  {
     path: 'account',
     loadChildren: () => import('./private/modules/login/login.module').then(m => m.LoginModule)
   },

@@ -6,10 +6,12 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit {
+displayLoginBtn;
+  constructor(public router: Router) { }
 
-  constructor(private router: Router) { }
+  ngOnInit(): void {
 
-  ngOnInit(): void { }
+  }
   navigateTo(path: string) {
     this.router.navigate([path]);
   }

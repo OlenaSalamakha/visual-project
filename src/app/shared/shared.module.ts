@@ -10,6 +10,14 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { RouterModule } from '@angular/router';
 import { SwiperModule } from 'swiper/angular';
+import { ReactiveFormsModule } from '@angular/forms';
+import {StepsModule} from 'primeng/steps';
+import {FileUploadModule} from 'primeng/fileupload';
+import {HttpClientModule} from '@angular/common/http';
+import {SliderModule} from 'primeng/slider';
+import {RatingModule} from 'primeng/rating';
+import {TimelineModule} from 'primeng/timeline';
+import {BreadcrumbModule} from 'primeng/breadcrumb';
 
 @NgModule({
   declarations: [
@@ -18,6 +26,7 @@ import { SwiperModule } from 'swiper/angular';
     LayoutComponent,
   ],
   imports: [
+    BreadcrumbModule,
     RouterModule,
     CommonModule,
     AccordionModule,
@@ -25,9 +34,23 @@ import { SwiperModule } from 'swiper/angular';
     CardModule,
     InputTextModule,
     PasswordModule,
-    SwiperModule
+    SwiperModule,
+    ReactiveFormsModule,
+    StepsModule,
+    FileUploadModule,
+    HttpClientModule,
+    SliderModule,
+    RatingModule,
+    TimelineModule
   ],
-  exports: [
+  exports: [BreadcrumbModule,
+    TimelineModule,
+    RatingModule,
+    SliderModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FileUploadModule,
+    StepsModule,
     SwiperModule,
     HeaderComponent,
     FooterComponent,
